@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  web_server:
+    build:
+      context: ../
+      dockerfile: docker/nginx/Dockerfile
+    volumes:
+      - ../:/service
+    ports:
+      - 9999:80
+    links:
+      - php
+    networks:
+      - php
+
+  php:
+    build:
+      context: ../
+      dockerfile: docker/php/Dockerfile
+    environment:
+      DATABASE_URL: null
+      APP_ENV: dev
+      APP_SECRET: 21def6fe50dee9cc1f190d522ac17c4106a6a432
+    networks:
+      - php
+    volumes:
+      - ../:/service
+
+networks:
+  php:
