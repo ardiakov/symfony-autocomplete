@@ -18,7 +18,5 @@ final class AutocompleteController
     public function autocomplete(Request $request): Response
     {
         $request = new AutocompleteRequest($request->query->all());
-
-
     }
 }

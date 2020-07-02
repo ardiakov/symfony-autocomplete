@@ -21,6 +21,10 @@ RUN composer install
 
 USER root
 RUN apk add acl
+
+RUN apk add yarn
+RUN yarn install
+
 # Give permissions to write to var
 RUN setfacl -dR -m u:www-data:rwX -m u:codekeeper:rwX var
 RUN setfacl -R -m u:www-data:rwX -m u:codekeeper:rwX var

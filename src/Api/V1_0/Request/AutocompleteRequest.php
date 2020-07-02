@@ -16,7 +16,7 @@ use Ardiakov\Autocomplete\Api\V1_0\Exceptions\RequestIsNotValid;
 final class AutocompleteRequest
 {
     /**
-     * @var null|string
+     * @var string|null
      */
     private string $value;
 
