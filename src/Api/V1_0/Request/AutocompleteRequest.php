@@ -18,14 +18,14 @@ final class AutocompleteRequest
     /**
      * @var string|null
      */
-    private string $value;
+    private string $query;
 
     public function __construct(array $content)
     {
         $this->validateContent($content);
         $this->validateValue($content);
 
-        $this->value = $content['value'];
+        $this->query = $content['query'];
     }
 
     private function validateContent(array $content): void
@@ -37,17 +37,17 @@ final class AutocompleteRequest
 
     private function validateValue(array $content): void
     {
-        if (false === isset($content['value'])) {
-            throw new ParameterDoesntExists('value');
+        if (false === isset($content['query'])) {
+            throw new ParameterDoesntExists('query');
         }
 
-        if (false === is_string($content['value'])) {
-            throw new ParameterIsNotValid('value');
+        if (false === is_string($content['query'])) {
+            throw new ParameterIsNotValid('query');
         }
     }
 
-    public function value(): string
+    public function query(): string
     {
-        return $this->value;
+        return $this->query;
     }
 }
