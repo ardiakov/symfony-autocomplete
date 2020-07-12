@@ -1,4 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -11,6 +12,7 @@ Encore
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
     .setPublicPath('/build')
+    .enableVueLoader()
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
 
@@ -70,10 +72,11 @@ Encore
         jQuery: 'jquery',
         'window.jQuery': 'jquery',
     })
-
+    .addPlugin(new VuetifyLoaderPlugin())
     // uncomment if you use API Platform Admin (composer req api-admin)
     //.enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
 ;
+
 
 module.exports = Encore.getWebpackConfig();
